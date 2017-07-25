@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Terítőt az asztalra</title>
+    <style>
+        .table {
+            height:200px;
+            width:200px;
+            display:inline-block;
+            text-align: center;
+            
+        }
+        .cloth {
+            height:200px;
+            width:200px;
+            display:inline-block;
+            text-align:center;
+            border: 2px solid black;
+        }
+    </style>
+    <script>
+      function startDragging(evt) {
+       evt.dataTransfer.setData("Img", evt.target.id);
+       evt.target.style.opacity = 0.3;
+      }
+      function allowDrop(evt) {
+        evt.preventDefault();
+      }
+      function drop(evt) {
+        evt.preventDefault();  
+	    var data = evt.dataTransfer.getData ("Img");
+	    evt.target.appendChild(document.getElementById(data));
+      }
+      function dragEnded(evt) {
+   	    evt.target.style.opacity = 1.0;
+      }
+    </script>
+    </head>
+<body>
+        <div  ondrop="drop(event)" ondragover="allowDrop(event)" class="cloth">
+            <img id="terito1" src="terito1.jpg" style="width:200px" draggable="true" ondragstart="startDragging(event)" ondragend="dragEnded(event)">
+        </div>
+        <div  ondrop="drop(event)" ondragover="allowDrop(event)" class="cloth">
+            <img id="terito2" src="terito2.jpg" style="width:200px" draggable="true" ondragstart="startDragging(event)" ondragend="dragEnded(event)">
+        </div>
+        <div  ondrop="drop(event)" ondragover="allowDrop(event)" class="cloth">
+            <img id="terito3" src="terito3.jpg" style="width:200px" draggable="true" ondragstart="startDragging(event)" ondragend="dragEnded(event)">
+        </div>
+        <div  ondrop="drop(event)" ondragover="allowDrop(event)" class="cloth">
+            <img id="terito4" src="terito4.jpg" style="width:200px" draggable="true" ondragstart="startDragging(event)" ondragend="dragEnded(event)">
+        </div>
+        <p>
+        <div  ondrop="drop(event)" ondragover="allowDrop(event)"  class="table">
+         <img id="table" src="asztal.jpg" style="width:300px; position: fixed; z-index: -1">  
+        </div>
+        
+</body>
+</html>
