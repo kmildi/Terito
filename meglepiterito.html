@@ -4,18 +4,25 @@
     <meta charset="utf-8">
     <title>Terítőt az asztalra</title>
     <style>
-        .table {
+        .tablediv {
             height:200px;
             width:200px;
-            display:inline-block;
-            text-align: center;
-            
+            display: block;
+            margin: auto; 
+            position: relative;         
+        }
+        #table {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            height:300px;
+            z-index: -1;
         }
         .cloth {
             height:200px;
             width:200px;
             display:inline-block;
-            text-align:center;
             border: 2px solid black;
         }
     </style>
@@ -38,8 +45,12 @@
     </script>
     </head>
 <body>
+        <div>
+            <h2>Válassz egy szép terítőt az asztalra!</h2>
+            <h3> (...és tedd rá!)</h3>
+        </div>
         <div  ondrop="drop(event)" ondragover="allowDrop(event)" class="cloth">
-            <img id="terito1" src="terito1.jpg" style="width:200px" draggable="true" ondragstart="startDragging(event)" ondragend="dragEnded(event)">
+            <img id="terito1" src="terito1.jpg" style="width:200px; position:absolute" draggable="true" ondragstart="startDragging(event)" ondragend="dragEnded(event)">
         </div>
         <div  ondrop="drop(event)" ondragover="allowDrop(event)" class="cloth">
             <img id="terito2" src="terito2.jpg" style="width:200px" draggable="true" ondragstart="startDragging(event)" ondragend="dragEnded(event)">
@@ -50,9 +61,9 @@
         <div  ondrop="drop(event)" ondragover="allowDrop(event)" class="cloth">
             <img id="terito4" src="terito4.jpg" style="width:200px" draggable="true" ondragstart="startDragging(event)" ondragend="dragEnded(event)">
         </div>
-        <p>
-        <div  ondrop="drop(event)" ondragover="allowDrop(event)"  class="table">
-         <img id="table" src="asztal.jpg" style="width:300px; position: fixed; z-index: -1">  
+        <div style="height:100px"></div>
+        <div  ondrop="drop(event)" ondragover="allowDrop(event)"  class="tablediv">
+         <img id="table" src="asztal.jpg">  
         </div>
         
 </body>
