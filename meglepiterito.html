@@ -11,7 +11,7 @@
             margin: auto; 
             position: relative;         
         }
-        #table {
+        .table {
             position: absolute;
             left: 50%;
             top: 50%;
@@ -24,7 +24,7 @@
             width:200px;
             display:inline-block;
             border: 2px solid black;
-        }
+        }        
     </style>
     <script>
       function startDragging(evt) {
@@ -36,8 +36,12 @@
       }
       function drop(evt) {
         evt.preventDefault();  
-	    var data = evt.dataTransfer.getData ("Img");
-	    evt.target.appendChild(document.getElementById(data));
+	    const data = evt.dataTransfer.getData("Img");
+        if (evt.target.id == "") {
+	      evt.target.appendChild(document.getElementById(data));
+        } else {
+            alert("Tedd el előbb a másikat!");
+        }
       }
       function dragEnded(evt) {
    	    evt.target.style.opacity = 1.0;
@@ -50,7 +54,7 @@
             <h3> (...és tedd rá!)</h3>
         </div>
         <div  ondrop="drop(event)" ondragover="allowDrop(event)" class="cloth">
-            <img id="terito1" src="terito1.jpg" style="width:200px; position:absolute" draggable="true" ondragstart="startDragging(event)" ondragend="dragEnded(event)">
+            <img id="terito1" src="terito1.jpg" style="width:200px" draggable="true" ondragstart="startDragging(event)" ondragend="dragEnded(event)">
         </div>
         <div  ondrop="drop(event)" ondragover="allowDrop(event)" class="cloth">
             <img id="terito2" src="terito2.jpg" style="width:200px" draggable="true" ondragstart="startDragging(event)" ondragend="dragEnded(event)">
@@ -63,7 +67,7 @@
         </div>
         <div style="height:100px"></div>
         <div  ondrop="drop(event)" ondragover="allowDrop(event)"  class="tablediv">
-         <img id="table" src="asztal.jpg">  
+         <img class="table" src="asztal.jpg">  
         </div>
         
 </body>
